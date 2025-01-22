@@ -25,27 +25,37 @@
       </div>
       <form action="" class="col-md-6 ">
         <div class="input-container">
-          <input type="text" id="first-name" required placeholder="username">
+          <input type="text" id="first-name" class="mb-4"  placeholder="firstName">
           <label for="first-name" >First Name</label>
+          <!-- error -->
+          <p class="error mb-2 none"></p>
         </div>
         <div class="input-container">
-          <input type="text" id="last-name" required placeholder="username">
+          <input type="text" id="last-name"class="mb-4"   placeholder="lastName">
           <label for="last-name" >Last Name</label>
+          <!-- error -->
+          <p class="error mb-2 none"></p>
         </div>
         <div class="input-container">
-          <input type="email" id="email" required placeholder="example@gmail.com">
+          <input type="email" id="email" class="mb-4"  placeholder="example@gmail.com">
           <label for="email">Email</label>
+          <!-- error -->
+          <p class="error mb-2 none"></p>
         </div>
         <div class="input-container">
-          <input type="password" id="password" required placeholder="********">
-          <label for="">Password</label>
+          <input type="text" class="mb-4" id="password"  placeholder="********">
+          <label for="" >Password</label>
+          <!-- error -->
+          <p class="error none mb-2"></p>
         </div>
         <div class="input-container">
-          <input type="password" id="confirm-password" required placeholder="********">
+          <input type="text" id="confirm-password"class="mb-4"  placeholder="********">
           <label for="">Re-Enter Password</label>
+          <!-- error -->
+          <p class="error mb-2 none">password doesn't match</p>
 
         </div>
-        <button>Sign up</button>
+        <button id="signup" type="submit">Sign up</button>
       </form>
     </div>
   </div>
