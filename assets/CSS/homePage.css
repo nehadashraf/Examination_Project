@@ -1,0 +1,167 @@
+
+  /* ------------------------------------- */
+  
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .container-fluid {
+    min-height: 100vh;
+    background-image: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+    position: relative;
+  }
+  .login-img{
+    position: absolute;
+    top:20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-img img{
+    padding-right: 10px;
+  }
+  .login-img p{
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .logout{
+    position: absolute;
+    bottom: 50px;
+    left: 25px;
+  }
+  
+  
+  .row {
+    background-color: white;
+    width: 80%;
+    height: 80%; 
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 30px; 
+  }
+  
+
+  
+  .images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    height: 90%; 
+    width: 90%;
+  }
+  
+  .img1,
+  .img2,
+  .img3 {
+    background-color: #f2f5f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  h1{
+    font-weight: 600;
+  }
+ 
+  
+  
+  .img1:hover,
+  .img2:hover,
+  .img3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+
+  .images button:hover {
+    color: black !important;
+    background-color: white !important;
+    transition: all .5s !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset !important;
+  }
+
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and smaller screens (max-width: 768px) */
+/* For tablets and smaller screens (min-width: 577px and max-width: 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .container-fluid {
+      padding: 110px 40px; 
+    }
+  
+    .row {
+      width: 90%; 
+      height: auto; 
+      padding: 15px; 
+    }
+  
+    .images {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      height: 100%; 
+      width: 100%;
+    }
+  
+    .img1,
+    .img2,
+    .img3 {
+      background-color: #f2f5f4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+
+    .login-img{
+        position: absolute;
+        top:10px;
+        left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-img img{
+        padding-right: 5px;
+      }
+      .login-img p{
+        color: white;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .logout{
+        position: absolute;
+        top: 20px; 
+        left:500px 
+      }
+  }
+  
+  
+  
