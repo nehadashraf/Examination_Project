@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="../assets/CSS/exam.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+  <div class="container-fluid flex-column">
+    <div class="back-btn">
+      <button class="" title="Back to Home"><i class="fa-solid fa-arrow-left"></i>Back home</button>
+    </div>
+    <div class="row main-row gap-2 align-items-center ">
+      <!--Header Section-->
+      <div class="row justify-content-center px-3 align-items-center  mt-2 mb-3">
+        <p class="col-6 m-0 col-md-2 session-test pe-3 fs-5">Session1 Test</p>
+        <div class="col-12 col-md-7">
+          <!-- Progress Bar -->
+          <div class="progress mx-auto" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+            style="height: 15px; border-radius: 15px;">
+            <div class="progress-bar fw-bold" style="width: 10%; border-radius: 15px;">10%</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-2 ms-3 ms-md-5 ps-3 ps-md-5">
+          <i class="fa-regular fa-clock"></i>
+          <span class="time">00:00 Min</span>
+        </div>
+      </div>
+      <!--Questions Section-->
+      <div class="row exam-row justify-content-center">
+        <div class="col-12 question">
+          <p class="fs-5" style="color: #616060;">Question 1</p>
+          <p class="fs-5">What is the main purpose of developing Front-end interfaces?</p>
+          <hr>
+          <form class="list-group">
+            <label class="justify-content-between list-group-item answer d-flex align-items-center mb-3 w-100">
+              Improve server performance
+              <input class="form-check-input me-3 custom-radio" type="radio" name="question1" value="Improve server performance">
+            </label>
+            <label class="justify-content-between  list-group-item  d-flex align-items-center mb-3 w-100">
+              Design interactive and attractive user interfaces.
+              <input class="form-check-input me-3" type="radio" name="question1"
+                value="Design interactive and attractive user interfaces.">
+            </label>
+            <label class="justify-content-between list-group-item  d-flex align-items-center mb-3 w-100">
+              Speed up databases.
+              <input class="form-check-input me-3" type="radio" name="question1" value="Speed up databases.">
+            </label>
+            <label class="justify-content-between list-group-item  d-flex align-items-center mb-3 w-100">
+              Reduce the number of API requests.
+              <input class="form-check-input me-3" type="radio" name="question1"
+                value="Reduce the number of API requests.">
+            </label>
+            <button class="submit-btn" title="Submit your answers">Submit</button>
+          </form>
+        </div>
+      </div>
+      
+      <!--Navigation Section-->
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-center mt-2">
+          <button class="previous" title="Previous question" ><i class="fa-solid fa-arrow-left "></i></button>
+          <button class="next" title="Next question"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

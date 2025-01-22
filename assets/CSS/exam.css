@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-fluid {
+  height: 100vh;
+  background-image: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-row {
+  background-color: #FFFFFF;
+  width: 78%;
+  height: 78%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+}
+
+.form-details p {
+  color: #969696;
+  font-weight: 200;
+}
+
+.form-details p a {
+  color: #A070EE;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+.main-row .row {}
+
+.session-test {
+  width: fit-content;
+}
+
+.progress-bar {
+  background-color: #6938EF
+}
+
+.exam-row {
+  background-color: #F2F5F4;
+  padding: 10px 40px;
+  border-radius: 20px;
+  width: 93%;
+}
+
+.question p {
+  font-size: 20px;
+}
+
+.question h5 {
+  color: #6F6C6C;
+  font-weight: 500;
+
+}
+.list-group{
+  position: relative;
+}
+.list-group-item {
+  font-size: 20px;
+  color: #6F6C6C;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.form-check-input:checked  {
+  background-color: #7F36F4;
+  border-color: #7F36F4;
+  box-shadow: 0 0 10px #A070EE;
+}
+.answer {
+  box-shadow: #A483DA7A 0px 7px 29px 0px;
+  border: 0;
+  border-radius: 0 !important;
+  border-left: 9px solid #6938EF
+}
+
+button {
+  border: 0;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: #ddcef5;
+  border-radius: 50%;
+}
+i {
+  font-size: 24px;
+  text-align: center;
+  color: #484848;
+}
+.fa-clock{
+  font-size: 20px;
+  padding: 7px;
+  text-align: center;
+  background-color: #ddcef5;
+  border-radius: 50%;
+  color:#A070EE;
+  font-size: 25px;
+}
+.time{
+  color: #969696;
+}
+
+.back-btn {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 200px;
+}
+.submit-btn{
+position: absolute;
+top:110%;
+left: 94%;
+background-color: #6938EF;
+height: 40px;
+width: 100px;
+color: white;
+border-radius: 30px;
+}
