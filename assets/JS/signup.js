@@ -13,12 +13,11 @@ const namePattern = /^[A-Z`a-z]+([ A-Za-z'-]*[A-Za-z])?$/;
 const passwordPattern =
   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  let isValidFirstName = false,
+let isValidFirstName = false,
   isValidLastName = false,
   isValidEmail = false,
   isValidPassword = false,
   isValidConfirmPassword = false;
-
 
 function ValidName(input, value, index) {
   if (!namePattern.test(value)) {
@@ -26,105 +25,64 @@ function ValidName(input, value, index) {
     error[index].innerHTML = `invalid name`;
     input.classList.remove("mb-4");
     error[index].classList.remove("none");
+    return false;
   } else {
     console.log("ok");
     input.classList.add("mb-4");
     error[index].classList.add("none");
-    if(input==first_name)
-    {
-      isValidFirstName=true;
-    }
-    else{
-      isValidLastName=true
-    }
-  }
-}
-function ValidEmail(value, index) {
-  if (!emailPattern.test(value)) {
-    error[index].innerHTML = `invalid email`;
-    email.classList.remove("mb-4");
-    error[index].classList.remove("none");
-  } else {
-    email.classList.add("mb-4");
-    error[index].classList.add("none");
-    isValidEmail=true;
-  }
-}
-function ValidPassword(value, index) {
-  if (!passwordPattern.test(value)) {
-    error[index].innerHTML = `Password must be at least 8 characters long,
-            include an uppercase letter, a lowercase letter, a number, 
-            and a special character`;
-    error[index].classList.remove("none");
-    password.classList.remove("mb-4");
-  } else {
-    password.classList.add("mb-4");
-    error[index].classList.add("none");
-    isValidPassword=true;
     return true;
   }
 }
-function ValidConfirmPassword(value, index) {
-  if (!(value === password.value)) {
-    error[index].innerHTML = `Password doesn't match`;
-    error[index].classList.remove("none");
+
+function ValidEmail() {
+  if (!emailPattern.test(email.value)) {
+    error[2].innerHTML = `invalid email`;
+    email.classList.remove("mb-4");
+    error[2].classList.remove("none");
+    return false;
   } else {
-    error[index].classList.add("none");
-    isValidConfirmPassword=true;
+    email.classList.add("mb-4");
+    error[2].classList.add("none");
+    return true;
+  }
+}
+function ValidPassword() {
+  if (!passwordPattern.test(password.value)) {
+    error[3].innerHTML = `Password must be at least 8 characters long,
+            include an uppercase letter, a lowercase letter, a number, 
+            and a special character`;
+    error[3].classList.remove("none");
+    password.classList.remove("mb-4");
+    return false;
+  } else {
+    password.classList.add("mb-4");
+    error[3].classList.add("none");
+    return true;
+  }
+}
+function ValidConfirmPassword() {
+  if (!(password.value === confirm_password.value)) {
+    error[4].innerHTML = `Password doesn't match`;
+    error[4].classList.remove("none");
+    return false;
+  } else {
+    error[4].classList.add("none");
+    return true;
   }
 }
 
- function Submit(e) {
-  
+function Submit(e) {
   e.preventDefault();
-  let correct = 0;
-
-  const inputs = [
-    { field: first_name, error: error[0] },
-    { field: last_name, error: error[1] },
-    { field: email, error: error[2] },
-    { field: password, error: error[3] },
-    { field: confirm_password, error: error[4] },
-  ];
-  inputs.forEach((input) => {
-    if (!input.field.value.trim()) {
-      input.error.innerHTML = "This Field Is Required";
-      input.field.classList.remove("mb-4");
-      input.error.classList.remove("none");
-      if(input.field==first_name)
-      {
-        isValidFirstName=false
-      }
-      if(input.field==last_name)
-      {
-        isValidLastName=false;
-      }
-      if(input.field==email)
-      {
-        isValidEmail=false;
-      }
-      if(input.field==password)
-      {
-        isValidPassword=false;
-      }
-      if(input==confirm_password)
-      {
-        isValidConfirmPassword=false;
-      }
-    } else {
-      input.error.innerHTML = "";
-      input.error.classList.add("none");
-      input.field.classList.add("mb-4");
-      
-    }
-  });
-  
-  if (isValidFirstName&&isValidLastName&&isValidEmail&&isValidPassword&&isValidConfirmPassword) {
-    localStorage.setItem("email", email.value);
-    localStorage.setItem("password", password.value);
-    console.log("Signup successful!");
+  if (
+    ValidName(first_name, first_name.value, 0) &&
+    ValidName(last_name, last_name.value, 1) &&
+    ValidEmail() &&
+    ValidPassword() &&
+    ValidConfirmPassword()
+  ) {
+    console.log("ALL TRUE");
   }
-} 
+}
 
 first_name.addEventListener("input", function () {
   ValidName(this, this.value, 0);
@@ -133,15 +91,15 @@ last_name.addEventListener("input", function () {
   ValidName(this, this.value, 1);
 });
 email.addEventListener("input", function () {
-  ValidEmail(this.value, 2);
+  ValidEmail();
 });
 password.addEventListener("input", function () {
-  if (ValidPassword(this.value, 3)) {
-    ValidConfirmPassword(confirm_password.value, 4);
+  if (ValidPassword()) {
+    ValidConfirmPassword();
   }
 });
 confirm_password.addEventListener("input", function () {
-  ValidConfirmPassword(this.value, 4);
+  ValidConfirmPassword();
 });
 submit.addEventListener("click", function (e) {
   Submit(e);
