@@ -40,7 +40,14 @@ function ValidEmail() {
     email.classList.remove("mb-4");
     error[2].classList.remove("none");
     return false;
-  } else {
+  }
+  if (email.value.trim() === "") {
+    error[2].innerHTML = `This field is required`; 
+    email.classList.remove("mb-4");
+    error[2].classList.remove("none");
+    return false;
+  }
+  else {
     email.classList.add("mb-4");
     error[2].classList.add("none");
     return true;
@@ -54,7 +61,8 @@ function ValidPassword() {
     error[3].classList.remove("none");
     password.classList.remove("mb-4");
     return false;
-  } else {
+  } 
+  else {
     password.classList.add("mb-4");
     error[3].classList.add("none");
     return true;
@@ -80,8 +88,15 @@ function Submit(e) {
     ValidPassword() &&
     ValidConfirmPassword()
   ) {
-    console.log("ALL TRUE");
+    localStorage.setItem("email", email.value);
+    localStorage.setItem("password", password.value);
+    document.querySelectorAll("input").forEach((input)=>{
+      input.value = "";
+    
+     })
   }
+
+  
 }
 
 first_name.addEventListener("input", function () {
