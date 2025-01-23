@@ -20,6 +20,7 @@ let isValidFirstName = false,
   isValidConfirmPassword = false;
 
 function ValidName(input, value, index) {
+  if (!input.value.trim()) return RequirdField(input, index);
   if (!namePattern.test(value)) {
     console.log("error");
     error[index].innerHTML = `invalid name`;
@@ -35,6 +36,7 @@ function ValidName(input, value, index) {
 }
 
 function ValidEmail() {
+  if (!email.value.trim()) return RequirdField(email, 2);
   if (!emailPattern.test(email.value)) {
     error[2].innerHTML = `invalid email`;
     email.classList.remove("mb-4");
@@ -47,6 +49,7 @@ function ValidEmail() {
   }
 }
 function ValidPassword() {
+  if (!password.value.trim()) return RequirdField(password, 3);
   if (!passwordPattern.test(password.value)) {
     error[3].innerHTML = `Password must be at least 8 characters long,
             include an uppercase letter, a lowercase letter, a number, 
@@ -61,6 +64,7 @@ function ValidPassword() {
   }
 }
 function ValidConfirmPassword() {
+  if (!confirm_password.value.trim()) return RequirdField(confirm_password, 4);
   if (!(password.value === confirm_password.value)) {
     error[4].innerHTML = `Password doesn't match`;
     error[4].classList.remove("none");
@@ -70,7 +74,12 @@ function ValidConfirmPassword() {
     return true;
   }
 }
-
+function RequirdField(input, index) {
+  error[index].innerHTML = `This field is required`;
+  input.classList.remove("mb-4");
+  error[index].classList.remove("none");
+  return false;
+}
 function Submit(e) {
   e.preventDefault();
   if (
@@ -78,9 +87,10 @@ function Submit(e) {
     ValidName(last_name, last_name.value, 1) &&
     ValidEmail() &&
     ValidPassword() &&
-    ValidConfirmPassword()
+    ValidConfirmPassword() 
   ) {
-    console.log("ALL TRUE");
+    localStorage.setItem("email",email.value);
+    localStorage.setItem("password",password.value);
   }
 }
 
