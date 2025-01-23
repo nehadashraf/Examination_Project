@@ -110,6 +110,7 @@ function Submit(e) {
     document.querySelectorAll("input").forEach((input)=>{
       input.value="";
     })
+    window.location.href="../../Pages/signin.html"
   }
 }
 
