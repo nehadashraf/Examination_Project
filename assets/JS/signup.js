@@ -6,7 +6,8 @@ let confirm_password = document.getElementById("confirm-password");
 let All_fields = document.querySelectorAll("input");
 let submit = document.getElementById("signup");
 let error = document.querySelectorAll(".error");
-let togglepssword=document.querySelectorAll(".fa-eye");
+let togglepssword=document.querySelector(".togglePassword");
+let toggleConfirmPassword=document.querySelector(".toggleConfirmPassword");
 console.log(All_fields);
 
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -81,6 +82,20 @@ function RequirdField(input, index) {
   error[index].classList.remove("none");
   return false;
 }
+function showHidePassword(input,field){
+  let icon=input.querySelector("i");
+  console.log(icon.classList.contains);
+  if (icon.classList.contains("fa-eye")) {
+    field.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    field.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
 function Submit(e) {
   e.preventDefault();
   if (
@@ -118,3 +133,10 @@ confirm_password.addEventListener("input", function () {
 submit.addEventListener("click", function (e) {
   Submit(e);
 });
+togglepssword.addEventListener("click", function () {
+  showHidePassword(togglepssword,password)
+});
+toggleConfirmPassword.addEventListener("click", function () {
+  showHidePassword(toggleConfirmPassword,confirm_password)
+});
+

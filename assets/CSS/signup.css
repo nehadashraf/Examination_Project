@@ -65,6 +65,7 @@ input {
   border: 1px solid rgba(128, 128, 128, 0.53);
   border-radius: 8px;
   outline: none;
+  position: relative;
 }
 
 label {
@@ -138,6 +139,19 @@ form button:hover {
   bottom: 55%;
   animation: sway 5s ease-in-out infinite;
   transition: all 2s;
+}
+.toggle{
+  position: absolute;
+  top:18%;
+  left:93%;
+  color: #969696;
+  cursor: pointer;
+}
+.toggle:hover{
+  color: #5e5e5e;
+}
+.togglePassword{
+
 }
 
 /*Animation*/
