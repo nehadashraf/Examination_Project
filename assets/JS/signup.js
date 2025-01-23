@@ -6,6 +6,7 @@ let confirm_password = document.getElementById("confirm-password");
 let All_fields = document.querySelectorAll("input");
 let submit = document.getElementById("signup");
 let error = document.querySelectorAll(".error");
+let togglepssword=document.querySelectorAll(".fa-eye");
 console.log(All_fields);
 
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -89,8 +90,7 @@ function Submit(e) {
     ValidPassword() &&
     ValidConfirmPassword() 
   ) {
-    localStorage.setItem("email",email.value);
-    localStorage.setItem("password",password.value);
+    console.log("ALL TRUE");
   }
 }
 
