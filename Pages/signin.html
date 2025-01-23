@@ -29,19 +29,24 @@
       </div>
       <form action="" class="col-md-6 ">
         <div class="input-container">
-          <input type="email" id="email" required placeholder="example@gmail.com">
+          <input type="email" id="email" class="mb-4"  placeholder="example@gmail.com">
           <label for="email" class="email-label" >Email</label>
+          <!-- error -->
+          <p class="error mb-2 none"></p>
         </div>
         <div class="input-container">
-          <input type="password" id="password" required placeholder="Password">
+          <input type="password" id="password" class="mb-4"   placeholder="Password">
+          <!-- error -->
+          <p class="error mb-2 none"></p>
         </div>
         <div class="input-container login-check">
         <div class="check">
-          <input type="checkbox" required >Keep me logged in
+          <input type="checkbox"  >Keep me logged in
         </div>
           <p class="m-0">forgot your password?</p>
         </div>
-        <button>Sign in</button>
+        <button id="signin">Sign in</button>
+        
       </form>
       <div class="col-md-4 line">
         <hr>
@@ -52,6 +57,8 @@
       </div>
     </div>
   </div>
+
+  <script src="../assets/JS/signin.js"></script>
   <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
