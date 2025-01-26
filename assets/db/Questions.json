@@ -1,0 +1,188 @@
+{
+  "HTML": [
+    {
+      "id": 1,
+      "question": "What does HTML stand for?",
+      "options": ["Hyper Text Markup Language", "High Transfer Markup Language", "Hyperlink Transfer Markup Language", "Hyper Transfer Markup Language"],
+      "answer": "Hyper Text Markup Language"
+    },
+    {
+      "id": 2,
+      "question": "What is the purpose of the `<head>` tag in HTML?",
+      "options": ["To display main content", "To define metadata", "To include scripts", "To define styles"],
+      "answer": "To define metadata"
+    },
+    {
+      "id": 3,
+      "question": "Which tag is used to create a hyperlink?",
+      "options": ["<link>", "<a>", "<href>", "<anchor>"],
+      "answer": "<a>"
+    },
+    {
+      "id": 4,
+      "question": "How do you add a comment in HTML?",
+      "options": ["<!-- Comment -->", "// Comment", "/* Comment */", "# Comment"],
+      "answer": "<!-- Comment -->"
+    },
+    {
+      "id": 5,
+      "question": "What is the correct way to create an ordered list in HTML?",
+      "options": ["<ul>", "<ol>", "<list>", "<order>"],
+      "answer": "<ol>"
+    },
+    {
+      "id": 6,
+      "question": "Which attribute is used to specify an image's source?",
+      "options": ["src", "href", "alt", "link"],
+      "answer": "src"
+    },
+    {
+      "id": 7,
+      "question": "Which tag is used to define a table row?",
+      "options": ["<td>", "<tr>", "<table>", "<row>"],
+      "answer": "<tr>"
+    },
+    {
+      "id": 8,
+      "question": "How do you set a background color in HTML?",
+      "options": ["<body style='background-color:blue;'>", "<background-color=blue>", "<body bg=blue>", "<bg=blue>"],
+      "answer": "<body style='background-color:blue;'>"
+    },
+    {
+      "id": 9,
+      "question": "Which HTML element is used to display a large heading?",
+      "options": ["<heading>", "<h1>", "<head>", "<h>"],
+      "answer": "<h1>"
+    },
+    {
+      "id": 10,
+      "question": "What is the default file extension for an HTML file?",
+      "options": [".html", ".htm", ".html5", ".txt"],
+      "answer": ".html"
+    }
+  ],
+  "CSS": [
+    {
+      "id": 1,
+      "question": "What does CSS stand for?",
+      "options": ["Cascading Style Sheets", "Creative Style Sheets", "Colorful Style Sheets", "Computer Style Sheets"],
+      "answer": "Cascading Style Sheets"
+    },
+    {
+      "id": 2,
+      "question": "How do you apply a background color in CSS?",
+      "options": ["background-color: red;", "bgcolor: red;", "color: red;", "bg: red;"],
+      "answer": "background-color: red;"
+    },
+    {
+      "id": 3,
+      "question": "Which property is used to change the font size?",
+      "options": ["font-size", "text-size", "font-weight", "size"],
+      "answer": "font-size"
+    },
+    {
+      "id": 4,
+      "question": "How do you add a comment in CSS?",
+      "options": ["/* Comment */", "// Comment", "<!-- Comment -->", "# Comment"],
+      "answer": "/* Comment */"
+    },
+    {
+      "id": 5,
+      "question": "Which CSS property is used to change text color?",
+      "options": ["color", "text-color", "font-color", "text"],
+      "answer": "color"
+    },
+    {
+      "id": 6,
+      "question": "How do you make a text bold in CSS?",
+      "options": ["font-weight: bold;", "text-weight: bold;", "font-style: bold;", "text-style: bold;"],
+      "answer": "font-weight: bold;"
+    },
+    {
+      "id": 7,
+      "question": "Which property is used to add space between elements?",
+      "options": ["margin", "padding", "border", "spacing"],
+      "answer": "margin"
+    },
+    {
+      "id": 8,
+      "question": "Which value is used for a flex container?",
+      "options": ["display: flex;", "flex: 1;", "flex-wrap: wrap;", "display: block;"],
+      "answer": "display: flex;"
+    },
+    {
+      "id": 9,
+      "question": "How do you apply an external CSS file?",
+      "options": ["<link rel='stylesheet' href='style.css'>", "<style src='style.css'>", "<css src='style.css'>", "<link href='style.css'>"],
+      "answer": "<link rel='stylesheet' href='style.css'>"
+    },
+    {
+      "id": 10,
+      "question": "Which property is used to set the space inside an element?",
+      "options": ["padding", "margin", "border", "width"],
+      "answer": "padding"
+    }
+  ],
+  "JS": [
+    {
+      "id": 1,
+      "question": "What is JavaScript used for?",
+      "options": ["Structure", "Design", "Functionality", "Database"],
+      "answer": "Functionality"
+    },
+    {
+      "id": 2,
+      "question": "How do you declare a variable in JavaScript?",
+      "options": ["var", "let", "const", "All of the above"],
+      "answer": "All of the above"
+    },
+    {
+      "id": 3,
+      "question": "Which symbol is used for comments in JavaScript?",
+      "options": ["//", "/* */", "#", "<!-- -->"],
+      "answer": "//"
+    },
+    {
+      "id": 4,
+      "question": "What does 'DOM' stand for?",
+      "options": ["Document Object Model", "Data Object Model", "Document Oriented Model", "Data Oriented Model"],
+      "answer": "Document Object Model"
+    },
+    {
+      "id": 5,
+      "question": "How do you write an arrow function in JavaScript?",
+      "options": ["() => {}", "function() {}", "=> {}", "() {} =>"],
+      "answer": "() => {}"
+    },
+    {
+      "id": 6,
+      "question": "Which method is used to parse a JSON string?",
+      "options": ["JSON.parse()", "JSON.stringify()", "JSON.decode()", "JSON.objectify()"],
+      "answer": "JSON.parse()"
+    },
+    {
+      "id": 7,
+      "question": "What keyword is used to check for equality without type conversion?",
+      "options": ["===", "==", "!=", "="],
+      "answer": "==="
+    },
+    {
+      "id": 8,
+      "question": "Which function is used to add a timer in JavaScript?",
+      "options": ["setTimeout()", "setInterval()", "delay()", "setTimer()"],
+      "answer": "setTimeout()"
+    },
+    {
+      "id": 9,
+      "question": "How do you check the length of an array?",
+      "options": ["array.length", "array.size", "array.count", "array.len"],
+      "answer": "array.length"
+    },
+    {
+      "id": 10,
+      "question": "How do you convert a string to a number in JavaScript?",
+      "options": ["parseInt()", "Number()", "Both A and B", "None of the above"],
+      "answer": "Both A and B"
+    }
+  ]
+}
