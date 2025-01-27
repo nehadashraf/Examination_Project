@@ -9,7 +9,7 @@ const progressBar = document.querySelector(".progress-bar");
 const submitBtn = document.querySelector(".submit-btn");
 let timerDisplay = document.querySelector(".time");
 let questionNumber = document.querySelector(".question-number");
-let flag = document.querySelector(".fa-flag");
+let flag = document.querySelector(".flag");
 
 const queryParams = new URLSearchParams(window.location.search);
 const key = queryParams.get("key");
@@ -51,20 +51,39 @@ function displayRandomQuestion() {
   let randomIndex = Math.floor(Math.random() * remainingQuestions.length);
   let question = remainingQuestions[randomIndex];
 
-  flag.addEventListener("click", function () {
-    const questionToMark = `Question ${currentIndex + 1}`;
-    if (!markedQuestion.includes(questionToMark)) {
-      markedQuestion.push(questionToMark); // Add only if it doesn't exist
+  if (flag) {
+    markedQuestion.forEach((m)=>{
+      console.log(m);
+      console.log(questionNumber);
+      
+      
+      if(m==questionNumber.innerHTML)
+      {
+        flag.innerHTML=`<i class="fa-solid fa-flag"></i>`
+      }else{
+        flag.innerHTML=`<i class="fa-regular fa-flag"></i>`
+
+      }
+
+    })
+    flag.addEventListener("click", function () { 
+      const questionToMark = `Question ${currentIndex + 1}`;
+      if (!markedQuestion.includes(questionToMark)) {
+        markedQuestion.push(questionToMark); // Add only if it doesn't exist
+    
+        markedContainer.innerHTML += `
+          <div class="d-flex justify-content-between ps-1 markedQuestion">
+            <p>${questionToMark}</p>
+            <i class="fa-solid fa-trash" style="cursor: pointer;" ></i>
+          </div>
+        `;
+      }
+      console.log(markedQuestion);
+    });
+  } else {
+    console.error("Flag element not found in the DOM!");
+  }
   
-      markedContainer.innerHTML += `
-        <div class="d-flex justify-content-between ps-1 markedQuestion">
-          <p>${questionToMark}</p>
-          <i class="fa-solid fa-trash"></i>
-        </div>
-      `;
-    }
-    console.log(markedQuestion);
-  });
   
 
   options.forEach((option, i) => {
@@ -98,6 +117,7 @@ function displayRandomQuestion() {
     prevBtn.classList.remove("none"); 
   }
   Question.innerHTML = `${question.question}`;
+  flag.innerHTML=`<i class="fa-regular fa-flag"></i>`
   questionNumber.innerHTML = `Question ${currentIndex + 1}`;
 }
 
