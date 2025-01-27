@@ -78,13 +78,23 @@ function displayRandomQuestion() {
     userAnswer: null,
   };
 
-  // Handle the visibility of the Previous button
-  if (currentIndex == 0) {
-    prevBtn.classList.add("none"); // Hide the Previous button if it's the first question
-  } else {
-    prevBtn.classList.remove("none"); // Show the Previous button otherwise
-  }
-  console.log("current :",currentIndex);
+
+// Handle the visibility of the Next button
+if (currentIndex === shownQuestions.length - 1 && remainingQuestions.length === 0) {
+  nextBtn.classList.add("none"); // Hide the Next button if it's the last question
+} else {
+  nextBtn.classList.remove("none"); // Show the Next button otherwise
+}
+
+// Handle the visibility of the Previous button
+if (currentIndex === 0) {
+  prevBtn.classList.add("none"); // Hide the Previous button if it's the first question
+} else {
+  prevBtn.classList.remove("none"); // Show the Previous button otherwise
+}
+
+
+
 
 }
 // Next button functionality

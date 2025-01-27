@@ -1,6 +1,22 @@
-let startHtml =document.getElementById("html-exam")
-let startCss =document.getElementById("css-exam")
-let startJs =document.getElementById("js-exam");
+const startHtml =document.getElementById("html-exam")
+const startCss =document.getElementById("css-exam")
+const startJs =document.getElementById("js-exam");
+const name =document.getElementById("name");
+const logout=document.querySelector(".logout")
+
+name.innerHTML = `Hello, ${localStorage.getItem("fistName")}`;
+
+
+function logoutUser() {
+  
+  localStorage.clear();
+
+  
+  window.location.href="../../Pages/signup.html"; 
+}
+logout.addEventListener("click",logoutUser);
+
+
 console.log(startCss);
 startHtml.addEventListener("click",function(){
   const data = { key: "HTML"};

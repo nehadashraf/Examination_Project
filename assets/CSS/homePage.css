@@ -35,9 +35,22 @@
     font-size: 20px;
   }
   .logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 50px;
     left: 25px;
+    cursor: pointer;
+  }
+  .logout p{
+    font-weight: 600;
+  }
+  .logout p,.logout i{
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-size: 25px;
+    color: white;
   }
   
   

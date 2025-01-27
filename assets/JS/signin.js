@@ -49,6 +49,7 @@ function Submit(e) {
     document.querySelectorAll("input").forEach((input) => {
       input.value = "";
     });
+    window.location.href="../../Pages/homePage.html"
   }else{
     console.log("not match");
     

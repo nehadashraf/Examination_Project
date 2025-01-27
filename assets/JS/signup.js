@@ -106,11 +106,12 @@ function Submit(e) {
     ValidConfirmPassword() 
   ) {
     localStorage.setItem("email",email.value);
+    localStorage.setItem("fistName",first_name.value);
     localStorage.setItem("password",password.value);
     document.querySelectorAll("input").forEach((input)=>{
       input.value="";
     })
-    window.location.href="../../Pages/signin.html"
+  window.location.href="../../Pages/signin.html"
   }
 }
 
@@ -133,6 +134,7 @@ confirm_password.addEventListener("input", function () {
 });
 submit.addEventListener("click", function (e) {
   Submit(e);
+  
 });
 togglepssword.addEventListener("click", function () {
   showHidePassword(togglepssword,password)
