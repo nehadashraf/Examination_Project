@@ -39,7 +39,7 @@ async function getQuestions() {
   }
 }
 
-function displayRandomQuestion(index) {
+function displayRandomQuestion() {
   // Check if no questions are left to display
   if (
     remainingQuestions.length === 0 &&
@@ -56,7 +56,6 @@ function displayRandomQuestion(index) {
     if (!markedQuestion.includes(questionToMark)) {
       markedQuestion.push(questionToMark); // Add only if it doesn't exist
   
-      // Add the marked question to the container
       markedContainer.innerHTML += `
         <div class="d-flex justify-content-between ps-1 markedQuestion">
           <p>${questionToMark}</p>
@@ -64,25 +63,20 @@ function displayRandomQuestion(index) {
         </div>
       `;
     }
-  
     console.log(markedQuestion);
   });
   
 
-  // Set options for the current question
   options.forEach((option, i) => {
     option.textContent = `${question.options[i]}`;
     option.classList.remove("answer");
   });
 
-  // Store the shown question in the shownQuestions array
   shownQuestions.push(question);
 
-  // Remove the displayed question from the remaining questions array
   remainingQuestions.splice(randomIndex, 1);
   currentIndex = shownQuestions.length - 1;
 
-  // Initialize the answers and results array with placeholders
   answers[currentIndex] = null;
   results[currentIndex] = {
     question: question.question,
@@ -90,7 +84,6 @@ function displayRandomQuestion(index) {
     userAnswer: null,
   };
 
-  // Handle the visibility of the Next button
   if (
     currentIndex === shownQuestions.length - 1 &&
     remainingQuestions.length === 0
@@ -99,17 +92,30 @@ function displayRandomQuestion(index) {
   } else {
     //  nextBtn.classList.remove("none"); // Show the Next button otherwise
   }
-
-  // Handle the visibility of the Previous button
   if (currentIndex === 0) {
-    prevBtn.classList.add("none"); // Hide the Previous button if it's the first question
+    prevBtn.classList.add("none"); 
   } else {
-    prevBtn.classList.remove("none"); // Show the Previous button otherwise
+    prevBtn.classList.remove("none"); 
   }
   Question.innerHTML = `${question.question}`;
   questionNumber.innerHTML = `Question ${currentIndex + 1}`;
 }
-// Next button functionality
+
+function handleDeleteMarkedQuestion(event) {
+  const questionToDelete = event.target.closest('.markedQuestion'); 
+  const questionText = questionToDelete.querySelector('p').textContent; 
+  markedQuestion = markedQuestion.filter((question) => question !== questionText);
+  questionToDelete.remove();
+  console.log(markedQuestion); 
+}
+
+markedContainer.addEventListener("click", (event) => {
+  if (event.target.classList.contains("fa-trash")) {
+    handleDeleteMarkedQuestion(event);
+  }
+});
+
+
 nextBtn.addEventListener("click", () => {
   if (currentIndex + 1 < shownQuestions.length) {
     currentIndex++;
@@ -117,9 +123,7 @@ nextBtn.addEventListener("click", () => {
     displayRandomQuestion();
   }
   let nextQuestion = shownQuestions[currentIndex];
-
   Question.innerHTML = `${nextQuestion.question}`;
-
   options.forEach((option, i) => {
     option.textContent = `${nextQuestion.options[i]}`;
     option.classList.remove("answer");
@@ -128,14 +132,14 @@ nextBtn.addEventListener("click", () => {
       option.classList.add("answer");
     }
   });
-  let progressPercentage = (currentIndex + 1) * 10; // Increase by 10% with each question
-
-  // Update the progress bar width and inner text
+  let progressPercentage = (currentIndex + 1) * 10; 
   progressBar.style.width = `${progressPercentage}%`;
   progressBar.innerHTML = `${progressPercentage}%`;
+  
+  // Update the question number after the index changes
+  questionNumber.innerHTML = `Question ${currentIndex + 1}`;
 });
 
-// Previous button functionality
 prevBtn.addEventListener("click", () => {
   if (currentIndex > 0) {
     currentIndex--;
@@ -148,6 +152,7 @@ prevBtn.addEventListener("click", () => {
         option.classList.add("answer");
       }
     });
+    // Update the question number after the index changes
     questionNumber.innerHTML = `Question ${currentIndex + 1}`;
   }
   let currentWidth = parseInt(progressBar.style.width.replace("%", ""));
@@ -158,7 +163,6 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-// Option click functionality
 options.forEach((option, index) => {
   option.addEventListener("click", function () {
     options.forEach((opt) => opt.classList.remove("answer"));
@@ -171,7 +175,6 @@ options.forEach((option, index) => {
   });
 });
 
-// Function to calculate and display the score
 function calculateScore() {
   let correctAnswersCount = 0;
   clearInterval(timerInterval);
@@ -205,13 +208,10 @@ function calculateScore() {
   markedContainer.classList.add("hide"); // Hide the marked questions section (optional)
 }
 
-// Submit button functionality
 submitBtn.addEventListener("click", calculateScore);
 
-// Load questions initially
 let timeLeft = 5 * 60; // 5 minutes in seconds
 
-// Function to update the timer
 function updateTimer() {
   // Convert the remaining time to minutes and seconds
   let minutes = Math.floor(timeLeft / 60);
@@ -240,7 +240,7 @@ function updateTimer() {
     `;
   }
 }
-// Start the timer and update every second
+
 let timerInterval = setInterval(updateTimer, 1000);
 
 getQuestions();
