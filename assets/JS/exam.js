@@ -1,6 +1,6 @@
 const container = document.querySelector(".container-fluid");
 const mainRow = document.querySelector(".main-row");
-const marked = document.querySelector(".marked-questions");
+const markedContainer = document.querySelector(".marked-questions");
 const Question = document.querySelector(".QS");
 const options = document.querySelectorAll(".option");
 const nextBtn = document.querySelector("#nextBtn");
@@ -9,6 +9,7 @@ const progressBar = document.querySelector(".progress-bar");
 const submitBtn = document.querySelector(".submit-btn");
 let timerDisplay = document.querySelector(".time");
 let questionNumber = document.querySelector(".question-number");
+let flag = document.querySelector(".fa-flag");
 
 const queryParams = new URLSearchParams(window.location.search);
 const key = queryParams.get("key");
@@ -18,6 +19,8 @@ let shownQuestions = []; // Store questions that have been shown previously
 let currentIndex = 0; // Track the current question index
 let answers = []; // Array to store user answers
 let results = []; // Array to store question, correct answer, and user answer
+let markedQuestion = [];
+let currentQuestion = null;
 
 async function getQuestions() {
   try {
@@ -32,11 +35,11 @@ async function getQuestions() {
   } catch (error) {
     console.error("Error fetching data:", error);
     mainRow.innerHTML = `<img src="../assets/images/Oops! 404 Error with a broken robot-rafiki 1.png" class="not-found">`;
-    marked.classList.toggle("hide");
+    markedContainer.classList.toggle("hide");
   }
 }
 
-function displayRandomQuestion() {
+function displayRandomQuestion(index) {
   // Check if no questions are left to display
   if (
     remainingQuestions.length === 0 &&
@@ -48,14 +51,23 @@ function displayRandomQuestion() {
   let randomIndex = Math.floor(Math.random() * remainingQuestions.length);
   let question = remainingQuestions[randomIndex];
 
-  // Display the current question
-  if (currentIndex == 0) {
-    questionNumber.innerHTML = `Question ${currentIndex + 1}`;
-  } else {
-    questionNumber.innerHTML = `Question ${currentIndex}`;
-  }
-
-  Question.innerHTML = `${question.question}`;
+  flag.addEventListener("click", function () {
+    const questionToMark = `Question ${currentIndex + 1}`;
+    if (!markedQuestion.includes(questionToMark)) {
+      markedQuestion.push(questionToMark); // Add only if it doesn't exist
+  
+      // Add the marked question to the container
+      markedContainer.innerHTML += `
+        <div class="d-flex justify-content-between ps-1 markedQuestion">
+          <p>${questionToMark}</p>
+          <i class="fa-solid fa-trash"></i>
+        </div>
+      `;
+    }
+  
+    console.log(markedQuestion);
+  });
+  
 
   // Set options for the current question
   options.forEach((option, i) => {
@@ -78,24 +90,24 @@ function displayRandomQuestion() {
     userAnswer: null,
   };
 
+  // Handle the visibility of the Next button
+  if (
+    currentIndex === shownQuestions.length - 1 &&
+    remainingQuestions.length === 0
+  ) {
+    //nextBtn.classList.add("none"); // Hide the Next button if it's the last question
+  } else {
+    //  nextBtn.classList.remove("none"); // Show the Next button otherwise
+  }
 
-// Handle the visibility of the Next button
-if (currentIndex === shownQuestions.length - 1 && remainingQuestions.length === 0) {
-  nextBtn.classList.add("none"); // Hide the Next button if it's the last question
-} else {
-  nextBtn.classList.remove("none"); // Show the Next button otherwise
-}
-
-// Handle the visibility of the Previous button
-if (currentIndex === 0) {
-  prevBtn.classList.add("none"); // Hide the Previous button if it's the first question
-} else {
-  prevBtn.classList.remove("none"); // Show the Previous button otherwise
-}
-
-
-
-
+  // Handle the visibility of the Previous button
+  if (currentIndex === 0) {
+    prevBtn.classList.add("none"); // Hide the Previous button if it's the first question
+  } else {
+    prevBtn.classList.remove("none"); // Show the Previous button otherwise
+  }
+  Question.innerHTML = `${question.question}`;
+  questionNumber.innerHTML = `Question ${currentIndex + 1}`;
 }
 // Next button functionality
 nextBtn.addEventListener("click", () => {
@@ -104,8 +116,8 @@ nextBtn.addEventListener("click", () => {
   } else {
     displayRandomQuestion();
   }
-
   let nextQuestion = shownQuestions[currentIndex];
+
   Question.innerHTML = `${nextQuestion.question}`;
 
   options.forEach((option, i) => {
@@ -116,7 +128,6 @@ nextBtn.addEventListener("click", () => {
       option.classList.add("answer");
     }
   });
-  console.log(shownQuestions.length);
   let progressPercentage = (currentIndex + 1) * 10; // Increase by 10% with each question
 
   // Update the progress bar width and inner text
@@ -126,8 +137,6 @@ nextBtn.addEventListener("click", () => {
 
 // Previous button functionality
 prevBtn.addEventListener("click", () => {
-  console.log(currentIndex);
-  
   if (currentIndex > 0) {
     currentIndex--;
     let prevQuestion = shownQuestions[currentIndex];
@@ -139,6 +148,7 @@ prevBtn.addEventListener("click", () => {
         option.classList.add("answer");
       }
     });
+    questionNumber.innerHTML = `Question ${currentIndex + 1}`;
   }
   let currentWidth = parseInt(progressBar.style.width.replace("%", ""));
   let newWidth = currentWidth - 10;
@@ -192,14 +202,14 @@ function calculateScore() {
   `;
   }
 
-  marked.classList.add("hide"); // Hide the marked questions section (optional)
+  markedContainer.classList.add("hide"); // Hide the marked questions section (optional)
 }
 
 // Submit button functionality
 submitBtn.addEventListener("click", calculateScore);
 
 // Load questions initially
-let timeLeft = 5* 60; // 5 minutes in seconds
+let timeLeft = 5 * 60; // 5 minutes in seconds
 
 // Function to update the timer
 function updateTimer() {
@@ -221,7 +231,7 @@ function updateTimer() {
   if (timeLeft < 0) {
     clearInterval(timerInterval); // Stop the timer
     console.log("timeout");
-    marked.classList.add("hide");
+    markedContainer.classList.add("hide");
     container.innerHTML = `
     <a class="back-btn pt-2 d-flex" href="./homePage.html">
       <i class="fa-solid fa-arrow-left me-1 " id=""></i><p class="pt-2 fs-6">Back home</p>

@@ -121,12 +121,19 @@ i {
   margin-left: 10px;
   background-color: #ddcef5;
   border-radius: 50%;
-}
-
-i {
   font-size: 24px;
   text-align: center;
   color: #484848;
+}
+
+.fa-trash{
+  font-size: 16px;
+  text-align: center;
+  background-color: transparent;
+  color: red
+}
+.markedQuestion{
+  color: #6F6C6C;
 }
 
 .fa-clock {
@@ -185,4 +192,7 @@ cursor: pointer;
 
 .none {
   visibility: hidden;
+}
+.fa-flag{
+cursor: pointer;
 }
