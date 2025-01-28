@@ -194,7 +194,7 @@ function calculateScore() {
       <i class="fa-solid fa-arrow-left me-1 " id=""></i><p class="pt-2 fs-6">Back home</p>
     </a>
       <img src="../assets/images/Business failure-bro 1.png" class="fail">
-  <h3 class="bold text-center">Your grade is ${scorePercentage}% faild <br> 
+  <h3 class="bold text-center">Your grade is ${scorePercentage}% failed <br> 
   try again</h3>
     `;
   } else {
@@ -203,7 +203,7 @@ function calculateScore() {
       <i class="fa-solid fa-arrow-left me-1 " id=""></i><p class="pt-2 fs-6">Back home</p>
     </a>
 <img src="../assets/images/Success factors-rafiki 1.png" class="sucess">
-<h3 class="bold text-center">Your grade is ${scorePercentage}% sucess</h3>
+<h3 class="bold text-center">Your grade is ${scorePercentage}% success</h3>
   `;
   }
 

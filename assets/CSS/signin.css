@@ -40,7 +40,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 10px !important;
 }
 
 form {
@@ -65,6 +65,7 @@ input {
   border: 1px solid rgba(128, 128, 128, 0.53);
   border-radius: 8px;
   outline: none;
+  position: relative;
 }
 input:focus{
   border-color: #7F36F4;
@@ -158,6 +159,17 @@ form button:hover {
 }
 .time-out-div{
   background-color: transparent;
+}
+.toggle {
+  position: absolute;
+  top: 18%;
+  left: 93%;
+  color: #969696;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: #5e5e5e;
 }
 
 /*Animation*/

@@ -2,6 +2,8 @@ let email = document.getElementById("email");
 let password = document.getElementById("password");
 let submit = document.getElementById("signin");
 let error = document.querySelectorAll(".error");
+let togglepssword=document.querySelector(".togglePassword");
+
 
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordPattern =
@@ -15,7 +17,7 @@ const passwordPattern =
 function ValidEmail() {
   if (!email.value.trim()) return RequirdField(email, 0);
   if (!emailPattern.test(email.value)) {
-    error[0].innerHTML = `invalid email`;
+    error[0].innerHTML =  `Please enter a valid email`;
     email.classList.remove("mb-4");
     error[0].classList.remove("none");
     return false;
@@ -60,6 +62,19 @@ function RequirdField(input, index) {
   error[index].classList.remove("none");
   return false;
 }
+function showHidePassword(input,field){
+  let icon=input.querySelector("i");
+  console.log(icon.classList.contains);
+  if (icon.classList.contains("fa-eye")) {
+    field.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    field.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
 
 email.addEventListener("input", function () {
   ValidEmail();
@@ -69,4 +84,7 @@ password.addEventListener("input", function () {
 });
 submit.addEventListener("click", function (e) {
   Submit(e);
+});
+togglepssword.addEventListener("click", function () {
+  showHidePassword(togglepssword,password)
 });

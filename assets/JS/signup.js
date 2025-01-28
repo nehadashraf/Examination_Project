@@ -25,7 +25,7 @@ function ValidName(input, value, index) {
   if (!input.value.trim()) return RequirdField(input, index);
   if (!namePattern.test(value)) {
     console.log("error");
-    error[index].innerHTML = `invalid name`;
+    error[index].innerHTML = `Please enter a valid name`;
     input.classList.remove("mb-4");
     error[index].classList.remove("none");
     return false;
@@ -40,7 +40,7 @@ function ValidName(input, value, index) {
 function ValidEmail() {
   if (!email.value.trim()) return RequirdField(email, 2);
   if (!emailPattern.test(email.value)) {
-    error[2].innerHTML = `invalid email`;
+    error[2].innerHTML = `Please enter a valid email`;
     email.classList.remove("mb-4");
     error[2].classList.remove("none");
     return false;
@@ -68,6 +68,7 @@ function ValidConfirmPassword() {
   if (!(password.value === confirm_password.value)) {
     error[4].innerHTML = `Password doesn't match`;
     error[4].classList.remove("none");
+    confirm_password.classList.remove("mb-4");
     return false;
   } else {
     error[4].classList.add("none");
