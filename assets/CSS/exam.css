@@ -33,7 +33,7 @@
 }
 
 .main-row {
-  height: ;
+  height: auto;
   background-color: #FFFFFF;
   border-radius: 20px;
   display: flex;
@@ -71,17 +71,13 @@ h1 {
   border-radius: 20px;
   width: 93%;
 }
-
 .question p {
   font-size: 20px;
 }
-
 .question h5 {
   color: #6F6C6C;
   font-weight: 500;
-
 }
-
 .list-group {
   position: relative;
 }
@@ -196,3 +192,63 @@ cursor: pointer;
 .fa-flag{
 cursor: pointer;
 }
+.time-out-div{
+background-color: transparent  !important;
+}
+@media (max-width: 576px) {
+  .container-fluid {
+    height: auto;
+  }
+  .main-row {
+    height: 100vh;
+  }
+
+  .marked-questions{
+    margin-top: 30px;
+    height: 500px;
+    width: 80%;
+    margin-bottom: 30px;
+  }
+  .clock{
+    width: 40%;
+    position: absolute;
+    top:52px;
+    left: 150px;
+    text-align: center;
+  }
+  .row{
+    display: flex;
+    flex-direction: column;
+  }
+  .flag{
+    position: absolute;
+    top:180px;
+    left: 260px;
+  }
+  .submit-btn{
+  top: 120%;
+  left: 83%;
+  height: 30px;
+  width: 80px;
+  }
+  .back-btn {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 40%;
+    height: 55px;
+    background-color:#F1E9FF;
+  border-radius: 30px;
+  cursor: pointer;
+  }
+  
+  
+  
+}
+@media (min-width: 577px) and (max-width: 768px) {
+}
+@media (min-width: 769px) and (max-width: 992px) {}
+
+@media (min-width: 993px) and (max-width: 1200px) {}
+
+@media (min-width: 1201px) {}

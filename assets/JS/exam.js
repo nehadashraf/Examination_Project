@@ -10,9 +10,12 @@ const submitBtn = document.querySelector(".submit-btn");
 let timerDisplay = document.querySelector(".time");
 let questionNumber = document.querySelector(".question-number");
 let flag = document.querySelector(".flag");
+let testName = document.querySelector(".session-test");
 
 const queryParams = new URLSearchParams(window.location.search);
 const key = queryParams.get("key");
+testName.innerHTML=`${key} Test`
+
 
 let remainingQuestions = [];
 let shownQuestions = []; 
@@ -238,7 +241,7 @@ function calculateScore() {
 
 submitBtn.addEventListener("click",calculateScore);
 
-let timeLeft = 5 * 60; // 5 minutes in seconds
+let timeLeft = .1 * 60; // 5 minutes in seconds
 
 function updateTimer() {
   // Convert the remaining time to minutes and seconds
@@ -261,10 +264,12 @@ function updateTimer() {
     console.log("timeout");
     markedContainer.classList.add("hide");
     container.innerHTML = `
+      <div class="row col-md-9 time-out-div  main-row gap-2 align-items-center ">
     <a class="back-btn pt-2 d-flex" href="./homePage.html">
       <i class="fa-solid fa-arrow-left me-1 " id=""></i><p class="pt-2 fs-6">Back home</p>
     </a>
       <img src="../assets/images/timeout.png" class="timeOut " alt="">
+      </div>
     `;
   }
 }

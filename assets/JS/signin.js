@@ -28,9 +28,7 @@ function ValidEmail() {
 function ValidPassword() {
   if (!password.value.trim()) return RequirdField(password, 1);
   if (!passwordPattern.test(password.value)) {
-    error[1].innerHTML = `Password must be at least 8 characters long,
-              include an uppercase letter, a lowercase letter, a number, 
-              and a special character`;
+    error[1].innerHTML = `Password must be 8+ characters, including uppercase, lowercase, number, and special character`;
     error[1].classList.remove("none");
     password.classList.remove("mb-4");
     return false;
@@ -45,14 +43,14 @@ function Submit(e) {
   e.preventDefault();
   if (ValidEmail() && ValidPassword() && email.value==storedEmail &&password.value==storedPassword) {
     console.log("ok");
-    
     document.querySelectorAll("input").forEach((input) => {
       input.value = "";
     });
     window.location.href="../../Pages/homePage.html"
   }else{
-    console.log("not match");
-    
+    error[2].innerHTML=`Invalid email or password. Please try again`;
+    error[2].classList.remove("none");
+    password.classList.remove("mb-4");
   }
 }
 

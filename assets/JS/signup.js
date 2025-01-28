@@ -53,9 +53,7 @@ function ValidEmail() {
 function ValidPassword() {
   if (!password.value.trim()) return RequirdField(password, 3);
   if (!passwordPattern.test(password.value)) {
-    error[3].innerHTML = `Password must be at least 8 characters long,
-            include an uppercase letter, a lowercase letter, a number, 
-            and a special character`;
+    error[3].innerHTML =`Password must be 8+ characters, including uppercase, lowercase, number, and special character`;
     error[3].classList.remove("none");
     password.classList.remove("mb-4");
     return false;
@@ -73,6 +71,7 @@ function ValidConfirmPassword() {
     return false;
   } else {
     error[4].classList.add("none");
+    confirm_password.classList.add("mb-4");
     return true;
   }
 }

@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   padding: 80px;
-  position: relative;
+
   height: 100vh;
 }
 
@@ -26,9 +26,6 @@
   justify-content: center;
 }
 
-.login-img img {
-  padding-right: 10px;
-}
 
 .login-img p {
   color: white;
@@ -57,8 +54,9 @@
   font-size: 25px;
   color: white;
 }
+
 .Main-row {
-background-color: #f2f5f4;
+  background-color: #f2f5f4;
   width: 80%;
   height: 100%;
   border-radius: 20px;
@@ -68,6 +66,7 @@ background-color: #f2f5f4;
   align-items: center;
   padding: 10px;
 }
+
 .card {
   background-color: #F2F5F4;
   display: flex;
@@ -78,16 +77,18 @@ background-color: #f2f5f4;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  
+
 }
 
 p {
   font-weight: 600;
 }
+
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 button:hover {
   color: black !important;
   background-color: white !important;
@@ -95,69 +96,107 @@ button:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset !important;
 }
 
-
-/* Media Queries for Responsiveness */
-
-/* For tablets and smaller screens (max-width: 768px) */
-/* For tablets and smaller screens (min-width: 577px and max-width: 768px) */
-@media (min-width: 577px) and (max-width: 768px) {
+/* Small Devices (Landscape Phones) */
+@media (min-width: 300px) and (max-width: 768px) {
   .container-fluid {
-    padding: 110px 40px;
+    height: auto;
+    padding: 0px;
+  }
+
+  .Main-row {
+    background-color: #f2f5f4;
+    height: auto;
+    margin-top: 70px;
+    margin-bottom: 20px;
   }
 
   .row {
-    width: 90%;
-    height: auto;
-    padding: 15px;
-  }
-
-  .images {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    height: 100%;
-    width: 100%;
-  }
-
-  .img1,
-  .img2,
-  .img3 {
-    background-color: #f2f5f4;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-
-
-  .login-img {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .login-img img {
-    padding-right: 5px;
-  }
-
-  .login-img p {
-    color: white;
-    font-weight: 600;
-    font-size: 15px;
+    width: 300px;
   }
 
   .logout {
-    position: absolute;
-    top: 20px;
-    left: 500px
+    top: -530px;
+    left: 250px;
   }
+
+  .logout p,
+  .logout i {
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  .logout p {
+    font-weight: 500;
+  }
+  .login-img {
+    top: 25px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-img p {
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+
 }
+
+/* Medium Devices (Tablets) */
+@media (min-width: 769px) and (max-width: 992px) {
+  .container-fluid {
+    height: auto;
+    padding: 0px;
+  }
+
+  .Main-row {
+    background-color: #f2f5f4;
+    height: auto;
+    margin-top: 70px;
+    margin-bottom: 20px;
+  }
+  .row {
+    width: 800px;
+  }
+
+  .logout {
+    top: -530px;
+    left: 700px;
+  }
+
+  .logout p,
+  .logout i {
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  .logout p {
+    font-weight: 500;
+  }
+  .login-img {
+    top: 25px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-img p {
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .card{
+    width: 500px;
+  }
+
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 993px) and (max-width: 1200px) {}
+
+/* Extra Large Devices (Large Desktops) */
+@media (min-width: 1201px) {}
