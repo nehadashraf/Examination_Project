@@ -144,7 +144,6 @@ button:hover {
   
 
 }
-
 /* Medium Devices (Tablets) */
 @media (min-width: 769px) and (max-width: 992px) {
   .container-fluid {
