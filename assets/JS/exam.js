@@ -15,10 +15,10 @@ const queryParams = new URLSearchParams(window.location.search);
 const key = queryParams.get("key");
 
 let remainingQuestions = [];
-let shownQuestions = []; // Store questions that have been shown previously
-let currentIndex = 0; // Track the current question index
-let answers = []; // Array to store user answers
-let results = []; // Array to store question, correct answer, and user answer
+let shownQuestions = []; 
+let currentIndex = 0; 
+let answers = []; 
+let results = []; 
 let markedQuestion = [];
 let currentQuestion = null;
 
@@ -40,93 +40,81 @@ async function getQuestions() {
 }
 
 function displayRandomQuestion() {
-  // Check if no questions are left to display
-  if (
-    remainingQuestions.length === 0 &&
-    currentIndex + 1 >= shownQuestions.length
-  ) {
-    // No more questions; calculate and display the score
+  if (remainingQuestions.length === 0) {
+    // No more questions; calculate and display score
+    return;
   }
 
   let randomIndex = Math.floor(Math.random() * remainingQuestions.length);
   let question = remainingQuestions[randomIndex];
 
-  if (flag) {
-    markedQuestion.forEach((m)=>{
-      console.log(m);
-      console.log(questionNumber);
-      
-      
-      if(m==questionNumber.innerHTML)
-      {
-        flag.innerHTML=`<i class="fa-solid fa-flag"></i>`
-      }else{
-        flag.innerHTML=`<i class="fa-regular fa-flag"></i>`
-
-      }
-
-    })
-    flag.addEventListener("click", function () { 
-      const questionToMark = `Question ${currentIndex + 1}`;
-      if (!markedQuestion.includes(questionToMark)) {
-        markedQuestion.push(questionToMark); // Add only if it doesn't exist
-    
-        markedContainer.innerHTML += `
-          <div class="d-flex justify-content-between ps-1 markedQuestion">
-            <p>${questionToMark}</p>
-            <i class="fa-solid fa-trash" style="cursor: pointer;" ></i>
-          </div>
-        `;
-      }
-      console.log(markedQuestion);
-    });
-  } else {
-    console.error("Flag element not found in the DOM!");
-  }
-  
-  
-
+  // Update the options
   options.forEach((option, i) => {
-    option.textContent = `${question.options[i]}`;
+    option.textContent = question.options[i];
     option.classList.remove("answer");
   });
 
+  // Add the question to shownQuestions and remove it from remainingQuestions
   shownQuestions.push(question);
-
   remainingQuestions.splice(randomIndex, 1);
-  currentIndex = shownQuestions.length - 1;
 
-  answers[currentIndex] = null;
+  // Update the current index and results
+  currentIndex = shownQuestions.length - 1;
   results[currentIndex] = {
     question: question.question,
     correctAnswer: question.answer,
     userAnswer: null,
   };
 
-  if (
-    currentIndex === shownQuestions.length - 1 &&
-    remainingQuestions.length === 0
-  ) {
-    //nextBtn.classList.add("none"); // Hide the Next button if it's the last question
-  } else {
-    //  nextBtn.classList.remove("none"); // Show the Next button otherwise
-  }
-  if (currentIndex === 0) {
-    prevBtn.classList.add("none"); 
-  } else {
-    prevBtn.classList.remove("none"); 
-  }
-  Question.innerHTML = `${question.question}`;
-  flag.innerHTML=`<i class="fa-regular fa-flag"></i>`
+  // Update UI elements
+  Question.innerHTML = question.question;
   questionNumber.innerHTML = `Question ${currentIndex + 1}`;
+  updateFlagIcon();
 }
 
+// Handle flag marking/unmarking
+flag.addEventListener("click", function () {
+  const questionId = shownQuestions[currentIndex].id;
+  const questionToMark = `Question ${currentIndex + 1}`;
+  const isMarked = markedQuestion.some(item => item.id === questionId);
+
+  if (isMarked) {
+    // Remove from marked questions
+    markedQuestion = markedQuestion.filter(item => item.id !== questionId);
+    const markedElement = markedContainer.querySelector(`[data-id="${questionId}"]`);
+    if (markedElement) markedElement.remove();
+    flag.innerHTML = `<i class="fa-regular fa-flag"></i>`;
+  } else {
+    // Add to marked questions
+    markedQuestion.push({ id: questionId, MarkQuestion: questionToMark });
+    markedContainer.innerHTML += `
+      <div class="d-flex justify-content-between ps-1 markedQuestion" data-id="${questionId}">
+        <p>${questionToMark}</p>
+        <i class="fa-solid fa-trash" style="cursor: pointer;"></i>
+      </div>
+    `;
+    flag.innerHTML = `<i class="fa-solid fa-flag" style="color: green;"></i>`;
+  }
+});
+
+
 function handleDeleteMarkedQuestion(event) {
-  const questionToDelete = event.target.closest('.markedQuestion'); 
-  const questionText = questionToDelete.querySelector('p').textContent; 
-  markedQuestion = markedQuestion.filter((question) => question !== questionText);
+  const questionToDelete = event.target.closest('.markedQuestion'); // Get the closest container for the marked question
+  const questionText = questionToDelete.querySelector('p').textContent; // Get the question text
+  const questionId = questionToDelete.dataset.id; // Retrieve the unique ID from the data attribute
+
+  // Remove the question from the markedQuestion array
+  markedQuestion = markedQuestion.filter((question) => question.id !== questionId);
+
+  // Remove the corresponding element from the UI
   questionToDelete.remove();
-  console.log(markedQuestion); 
+
+  // Reset the flag icon for the current question if it's the one being deleted
+  if (shownQuestions[currentIndex].id === questionId) {
+    flag.innerHTML = `<i class="fa-regular fa-flag"></i>`;
+  }
+
+  console.log(markedQuestion); // Debugging: Verify the updated array
 }
 
 markedContainer.addEventListener("click", (event) => {
@@ -135,6 +123,16 @@ markedContainer.addEventListener("click", (event) => {
   }
 });
 
+function updateFlagIcon() {
+  const questionId = shownQuestions[currentIndex].id;
+  const isMarked = markedQuestion.some(item => item.id === questionId);
+
+  if (isMarked) {
+    flag.innerHTML = `<i class="fa-solid fa-flag" style="color: green;"></i>`;
+  } else {
+    flag.innerHTML = `<i class="fa-regular fa-flag"></i>`;
+  }
+}
 
 nextBtn.addEventListener("click", () => {
   if (currentIndex + 1 < shownQuestions.length) {
@@ -142,6 +140,7 @@ nextBtn.addEventListener("click", () => {
   } else {
     displayRandomQuestion();
   }
+
   let nextQuestion = shownQuestions[currentIndex];
   Question.innerHTML = `${nextQuestion.question}`;
   options.forEach((option, i) => {
@@ -152,12 +151,16 @@ nextBtn.addEventListener("click", () => {
       option.classList.add("answer");
     }
   });
+
   let progressPercentage = (currentIndex + 1) * 10; 
   progressBar.style.width = `${progressPercentage}%`;
   progressBar.innerHTML = `${progressPercentage}%`;
   
-  // Update the question number after the index changes
+  // Update the question number
   questionNumber.innerHTML = `Question ${currentIndex + 1}`;
+
+  // Update the flag icon based on whether the current question is marked
+  updateFlagIcon();
 });
 
 prevBtn.addEventListener("click", () => {
@@ -172,15 +175,20 @@ prevBtn.addEventListener("click", () => {
         option.classList.add("answer");
       }
     });
-    // Update the question number after the index changes
+
+    // Update the question number
     questionNumber.innerHTML = `Question ${currentIndex + 1}`;
   }
+
   let currentWidth = parseInt(progressBar.style.width.replace("%", ""));
   let newWidth = currentWidth - 10;
   if (newWidth != 0) {
     progressBar.style.width = `${newWidth}%`;
     progressBar.innerHTML = `${newWidth}%`;
   }
+
+  // Update the flag icon based on whether the current question is marked
+  updateFlagIcon();
 });
 
 options.forEach((option, index) => {
@@ -202,8 +210,8 @@ function calculateScore() {
     if (result.userAnswer === result.correctAnswer) {
       correctAnswersCount++;
     }
-  });
-
+  }
+);
   let scorePercentage = (correctAnswersCount / 10) * 100;
 
   if (scorePercentage < 50) {
@@ -228,7 +236,7 @@ function calculateScore() {
   markedContainer.classList.add("hide"); // Hide the marked questions section (optional)
 }
 
-submitBtn.addEventListener("click", calculateScore);
+submitBtn.addEventListener("click",calculateScore);
 
 let timeLeft = 5 * 60; // 5 minutes in seconds
 

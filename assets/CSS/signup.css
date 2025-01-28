@@ -99,12 +99,13 @@ input[type="checkbox"] {
 }
 
 button {
-  width: 58%;
+  width: 67%;
   padding: 10px 18px;
   border-radius: 10px;
   border: 1px solid rgba(128, 128, 128, 0.53);
   font-size: 18px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 
 form button {
