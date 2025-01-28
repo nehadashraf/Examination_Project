@@ -241,7 +241,7 @@ function calculateScore() {
 
 submitBtn.addEventListener("click",calculateScore);
 
-let timeLeft = .1 * 60; // 5 minutes in seconds
+let timeLeft = 5 * 60; // 5 minutes in seconds
 
 function updateTimer() {
   // Convert the remaining time to minutes and seconds
